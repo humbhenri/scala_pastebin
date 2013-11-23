@@ -1,16 +1,18 @@
 package scala_pastebin
 
-import scala.io.Source
-import dispatch._
-import Defaults._
-import java.net.URLEncoder
 import java.awt.Toolkit
 import java.awt.datatransfer._
+import dispatch._
+import dispatch.Defaults._
+import scala.io.Source
 
 object Main extends App with ClipboardOwner {
   override def main(args: Array[String]) {
     val argsParser = CommandArgsParser(args)
     argsParser map { config =>
+      if (!config.file.isEmpty) {
+        config.api_paste_code = Source fromFile (config.file) mkString
+      }
       if (!config.api_paste_code.isEmpty) {
         val request = url("http://pastebin.com/api/api_post.php").POST << ObjectToMap(config)
         val response = Http(request OK as.String)

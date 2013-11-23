@@ -1,8 +1,4 @@
 scala_pastebin
-==============
-
-scala command line client for pastebin.com
-
 Usage: scala_pastebin [options]
 
   -k <value> | --api_dev_key <value>
@@ -22,5 +18,7 @@ N = Never
 1M = 1 Month
   -o <value> | --api_option <value>
         option
+  -i <value> | --file <value>
+        file to upload
   --help
         prints this usage text

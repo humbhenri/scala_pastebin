@@ -36,6 +36,10 @@ object CommandArgsParser {
         config.copy(api_option = value)
       } text ("option")
 
+      opt[String]('i', "file") action { (value, config) =>
+        config.copy(file = value)
+      } text ("file to upload")
+
       help("help") text ("prints this usage text")
 
       override def showUsageOnError = true
